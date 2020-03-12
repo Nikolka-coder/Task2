@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Practice_2
+namespace Fibonacci
 {
     class Program
     {
