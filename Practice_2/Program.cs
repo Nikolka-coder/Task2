@@ -2,30 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Fibonacci
+namespace Practice_2
 {
     class Program
     {
-        public static IEnumerable<int> Fibonacci()
-        {
-            int current = 0;
-            int next = 1;
-            while (true)
-            {
-                yield return current;
-                int temp = next;
-                next = current + next;
-                current = temp;
-            }
-        }
         static void Main(string[] args)
         {
             Console.WriteLine("Input n:");
-            int n = Convert.ToInt32(Console.ReadLine());
-            int result = Fibonacci().TakeWhile(x => x < n)
-                          .Where(x => x % 2 == 0)
-                          .Sum();
-            Console.WriteLine(result);
+            int num = Convert.ToInt32(Console.ReadLine());
+            int n1 = 0, n2 = 1, n3 = 0;
+
+            var result = Enumerable.Range(1, num).Select(n =>
+            {
+                n3 = n1 + n2;
+                int res = n3;
+                n1 = n2;
+                n2 = n3;
+                return res;
+            }).Reverse().First();
+            Console.WriteLine(result); 
             Console.ReadKey();
         }
     }
